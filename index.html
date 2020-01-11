@@ -25,8 +25,67 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+                  <h2>High-availability for PostgreSQL in OpenShift</h1>
+				</section>
+                <section>
+                  <h3>Objectives</h3>
+                </section>
+                <section>
+                  <h3>OpenShift/Kubernetes</h3>
+                </section>
+                <section>
+                  <h3>PostgreSQL</h3>
+                </section>
+				<section>
+                 <h3>API example</h3>
+                  <pre>
+                    <code>
+ 1  apiVersion: postgresql.openshift.io/v1
+ 2  kind: PostgreSQL
+ 3  metadata:
+ 4    name: example-postgresql
+ 5  spec:
+ 6    managementState: managed
+ 7    nodes:
+ 8      node-one:
+ 9        image: mcyprian/postgresql-10-fedora29:1.0
+10        priority: 100
+11        resources:
+12          limits:
+13            memory: 500Mi
+14            cpu: 200m
+15          requests:
+16            memory: 256Mi
+17            cpu: 100m
+18        storage:
+19          storageClassName: local-storage
+20          size: 256Mi
+21      node-two:
+22        image: mcyprian/postgresql-10-fedora29:1.0
+23        priority: 80
+24        storage:
+25          storageClassName: local-storage
+26          size: 256Mi
+27      node-three:
+28        image: mcyprian/postgresql-10-fedora29:1.0
+29        priority: 60
+30        storage:
+31          storageClassName: local-storage
+32          size: 256Mi
+                    </code>
+                  </pre>
+                </section>
+                <section>
+                  <h3>Operator demo</h3>
+                  <video width="100%" controls>
+                    <source src="img/operator-demo.mp4" type="video/mp4">A
+                    Your browser does nto support the video tag.
+                  </video>
+                </section>
+                <section>
+                    <h3>Testing</h3>
+                </section>
 			</div>
 		</div>
 
