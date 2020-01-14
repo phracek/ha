@@ -39,12 +39,13 @@
                   </ul>
                 </section>
                 <section>
-                  <h3>OpenShift and Kubernetes</h3>
-                  <p>Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management.</p>
+                  <h3>Kubernetes</h3>
+                  <p>Kubernetes is an open-source container-orchestration system for automating application
+                  deployment, scaling, and management.</p>
                 <img src="img/k8s.svg" class="logo">
                 </section>
                 <section>
-                  <h3>OpenShift and Kubernetes</h3>
+                  <h3>The key features of Kubernetes</h3>
                   <ul>
                     <li>high-availability</li>
                     <li>load balanding</li>
@@ -55,13 +56,35 @@
                   </ul>
                 </section>
                 <section>
-                  <h3>OpenShift and Kubernetes</h3>
-                  <p>OpenShift is an open source container application platform by Red Hat based on Kubernetes. It Provides additional security policies, enteprise support, console UI and more features.</p>
+                  <h3>OpenShift</h3>
+                  <p>OpenShift is an open source container application platform by Red Hat based on Kubernetes.
+                   It Provides additional security policies, enteprise support, image streams, console UI and more features.</p>
                   <img src="img/openshift.png" class="logo">
                 </section>
                 <section>
+                  <h3>Operators</h3>
+                  <p>A Kubernetes Operator is a method for application deployment that extends the
+                  capabilities of Kubernetes to manage more complex, stateful workloads. Examples of
+                  these workloads include databases and distributed systems.</p>
+                </section>
+                <section>
                   <h3>HA for PostgreSQL</h3>
+                  <p>Many approaches and options, critical attributes of the technology:</p>
+                  <ul>
+                    <li>easy setup</li>
+                    <li>scale a number of replicas</li>
+                    <li>ability to survive restarts</li>
+                  </ul>
                   <img src="img/pg.png" class="logo">
+                </section>
+                <section>
+                  <h3>Selected technologies</h3>
+                  <ul>
+                    <li>Operator Framework for operator development</li>
+                    <li>Repmgr for replication</li>
+                    <li>repmgrd daemon for automatic failover</li>
+                    <li>Pgpool-II for load balancing and connection pooling</li>
+                  </ul>
                 </section>
                 <section>
                   <h3>HA cluster design</h3>
@@ -121,7 +144,26 @@
                    </video>
                 </section>
                 <section>
-                  <h3>Testing</h3>
+                  <h3>Test environment</h3>
+                  <ul>
+                    <li>a PostgreSQL cluster managed by the operator</li>
+                    <li>Pgpool-II proxy containers</li>
+                    <li>two replicas of a simple web-based application</li>
+                  </ul>
+                </section>
+                <section>
+                  <h3>Test scenario</h3>
+                  <ol>
+                    <li>a fresh test environment is initialized</li>
+                    <li>a <em>test_timestamps</em> table is created in test database</li>
+                    <li>the reader and writer scripts are started</li>
+                    <li>corruption of the volume mounted to the primary node is simulated</li>
+                    <li>the failover process is monitored until writes to the new master start to succeed</li>
+                    <li>the downtime is measured based on the reader and writer logs</li>
+                  </ol>
+                </section>
+                <section>
+                  <h3>Test results</h3>
                   <table>
                     <tr>
                       <th>cluster size</th>
